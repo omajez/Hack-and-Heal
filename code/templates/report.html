@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report a Disaster</title>
+
+    <style>
+        header {
+            background-color: black;
+            text-align: center;
+            height: 10em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header img {
+            width: 15em;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .contact-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        .contact-form h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form button {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .contact-form button {
+            padding: 10px;
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background-color: black;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+
+        footer img {
+            width: 15em;
+        }
+
+        footer button {
+            font-weight: bold;
+            padding: 0.5em 1em 0.5em 1em;
+            margin: 2em;
+            font-size: large;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="hack and heal logo">
+    </header>
+    <div class="contact-form">
+        <h1>Report a Disaster</h1>
+        <form id="reportForm">
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" placeholder="Click to get your location">
+            <button type="button" onclick="getLocation()">Get My Location</button>
+
+            <label for="image">Upload Image</label>
+            <input type="file" id="image" name="image" accept="image/*">
+
+            <button type="submit">Submit Report</button>
+        </form>
+    </div>
+    <footer>
+        <button>Contact Us</button>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="hack and heal logo">
+    </footer>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        document.getElementById("location").value = `Latitude: ${latitude}, Longitude: ${longitude}`;
+                    },
+                    (error) => {
+                        alert("Error getting location: " + error.message);
+                    }
+                );
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+    </script>
+</body>
+
+</html>

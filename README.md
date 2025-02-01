@@ -3,10 +3,9 @@ Hackathon 25 project for crisis management.
 
 This project is just a simulation before implementing it into the real world. coords_generators.py contains all the code to generate random points and plot them into google maps using the gmplot library. helper_functions.py contains all of the logical code like finding the best refugee camp. In main.py, a gmplot.GoogleMapPlotter object is created with coordinates that form a square. These coordinates are the boundaries which specify where the simulation will take place. You can change these coordinates to any coordinates as long as they form a square/rectangle with no or little rotation.
 
-If you want to change the the predefined coordinates, you need a coordinate for the center of the square/rectangle in this form: (latitude, longitude) in degrees, the variable in main.py is called "CENTER". Then, create a list for the latitude coordinates of the square/rectangle corners and create another list for the longitude coordinates. In main.py, these lists are called "LATS" and "LONGS". After that, you need to define the latitude coordinate for the lower left corner of the square and the upper right corner of the square, these are called "LAT_MIN" and "LAT_MAX" in main.py. Do the same thing for longitude coordinates. All variables mentioned for this part is in uppercase in main.py
+Running app.py will create a an http address, open in it your browser to open our website.
 
-Use the functions in point_generators.py to generate coordinates for the user, refugee camps and danger zones. All of these coordinates are randomly generated.
-
+If you only want to use the code, you can use the functions in coords_generators.py to generate coordinates for the user, refugee camps and danger zones. All of these coordinates are randomly generated.
 Once the coordinates are gathered, use the helper_functions.py to find the nearest and safest camp (best camp) and to check if it's worth going to. The find_best_camp function does not plot the best camp, it returns the coordinates of the best camp. After getting the coordinates, it is recommended to put it into the check_camp_worthiness function to see if going to the best camp is worth it or not based on how far the nearest danger zone to the point is and nearest danger zone to the best camp is.
 
 coords_generators.py functions:
@@ -18,6 +17,19 @@ coords_generators.py functions:
 
   generate_rand_marker(gmap, lat_min, lat_max, long_min, long_max, color="grey", title=None, label=None)
     Generates a random marker within a predefined square that must not be rotated. The marker represents a person. Returns the coords of the random marker in this format: (latitude, longitude)
+
+  def generate_gmap_sim_square(user, length, height, user_color="grey", user_label="You")
+    Creates a GoogleMapPlotter object and generates a random square for the simulation. The coordinates of the user will always be inside the
+    simulatoin square.
+    params:
+    user -> Coordinates of the user in latitude and longitude
+    length -> Length of the square in KM
+    height -> Height of the square in KM
+    user_color -> Color of the user's marker
+    user_label -> Label to be displayed for the user's marker
+    returns a tuple containing the center of the square, coordinates of the bottom left corner square (because it has the minimum latitude and 
+    longitude) and the coordinates of the top right corner of the square (because it has the maximum latitude and longitude)
+    
 
 
 helper_functions.py functions:

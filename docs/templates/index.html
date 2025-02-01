@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Zone</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+</head>
+
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="hack and heal logo">
+    </header>
+
+    <main>
+        <section class="safezone">
+            <img style="width: 100%; filter: blur(10px);"
+                src="{{ url_for('static', filename='images/Earth Image.webp') }}" alt="Image of the Earth">
+            <h1>Safe Zone</h1>
+            <p>Navigate your way to safety</p>
+            <form action="" method="post">
+                <input type="button" value="Emergency" id="emergency-button">
+                <input type="submit" value="Navigate" id="navigate-button">
+                <button id="report-button"><a style="color: white;" href="{{ url_for('report') }}">Report</a></button>
+            </form>
+        </section>
+
+        <section class="intro">
+            <img style="width: 30%;" src="{{ url_for('static', filename='images/Natural Disaster.jpeg.jpg') }}"
+                alt="Image of a natural disaster">
+            <section>
+                <h2>What is Safe Zone</h2>
+                <p>
+                    Safe Zone is a lifesaving platform designed to help people
+                    navigate war zones and natural disasters by identifying dangerous
+                    areas, safe shelters, and aid distribution points. The website relies
+                    on real-time, crowdsourced reports from users to map out risk
+                    zones and highlight safe locations. It features an emergency
+                    button that instantly notifies the national helpline, ensuring quick
+                    access to assistance when needed. By integrating government
+                    alerts and NGO resources, Safe Zone provides reliable, up-to-date
+                    information to help individuals and communities stay safe during
+                    crises. Our mission is to empower people with critical information
+                    when it matters most.
+                </p>
+            </section>
+        </section>
+
+        <section class="points">
+            <section class="point">
+                <img src="{{ url_for('static', filename='images/shield icon.png') }}" alt="">
+                <section>
+                    <h3>Stay Safe</h3>
+                    <p>
+                        Get real-time updates on unsafe
+                        areas reported by users and
+                        official sources to avoid high-risk
+                        locations.
+                    </p>
+                </section>
+            </section>
+            <section class="point">
+                <img src="{{ url_for('static', filename='images/signal icon.png') }}" alt="">
+                <section>
+                    <h3>Find Help</h3>
+                    <p>
+                        Discover nearby shelters and aid distribution points for food, medical assistance,
+                        and safe refuge.
+                    </p>
+                </section>
+            </section>
+            <section class="point">
+                <img src="{{ url_for('static', filename='images/info icon.png') }}" alt="">
+                <section>
+                    <h3>Get Assistance</h3>
+                    <p>
+                        Press the emergency button to
+                        alert the national helpline and get
+                        immediate help when in danger.
+                    </p>
+                </section>
+            </section>
+        </section>
+
+        <section class="support">
+            <h2>Support Those in Need</h2>
+            <p>
+                Your contribution can help provide essential aid, shelter, and emergency assistance to those
+                affected by war and natural disasters. Every donation brings hope and safety to those who
+                need it most.
+            </p>
+            <button>Donate</button>
+        </section>
+    </main>
+
+    <footer>
+        <button><a href="{{ url_for('contact') }}">Contact Us</a></button>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="hack and heal logo">
+    </footer>
+</body>
+
+</html>

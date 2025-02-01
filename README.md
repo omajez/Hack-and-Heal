@@ -3,7 +3,9 @@ Hackathon 25 project for crisis management.
 
 This project is just a simulation before implementing it into the real world. coords_generators.py contains all the code to generate random points and plot them into google maps using the gmplot library. helper_functions.py contains all of the logical code like finding the best refugee camp. In main.py, a gmplot.GoogleMapPlotter object is created with coordinates that form a square. These coordinates are the boundaries which specify where the simulation will take place. You can change these coordinates to any coordinates as long as they form a square/rectangle with no or little rotation.
 
-Running app.py will create a an http address, open in it your browser to open our website.
+To use the code in this repository, you need to install these libraries: flask, gmplot and haversine
+
+Running app.py will create an http address, open it in your browser to open the website.
 
 If you only want to use the code, you can use the functions in coords_generators.py to generate coordinates for the user, refugee camps and danger zones. All of these coordinates are randomly generated.
 Once the coordinates are gathered, use the helper_functions.py to find the nearest and safest camp (best camp) and to check if it's worth going to. The find_best_camp function does not plot the best camp, it returns the coordinates of the best camp. After getting the coordinates, it is recommended to put it into the check_camp_worthiness function to see if going to the best camp is worth it or not based on how far the nearest danger zone to the point is and nearest danger zone to the best camp is.
